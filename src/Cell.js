@@ -9,14 +9,21 @@ import "./Cell.css";
  *      cell and the cells around of it
  *
  * - isLit: boolean, is this cell lit?
+ * 
+ * - coord: string like "y-x"
  *
  * This handles clicks --- by calling flipCellsAroundMe
  *
  **/
 
-function Cell({ flipCellsAroundMe, isLit }) {
+function Cell({ flipCellsAroundMe, isLit, coord }) {
+  function handleFlip(evt) {
+    console.log("this is coord", coord)
+    flipCellsAroundMe(coord)
+  }
+
   const classes = `Cell ${isLit ? "Cell-lit" : ""}`;
-  return <td className={classes} onClick={flipCellsAroundMe} />;
+  return <td className={classes} onClick={handleFlip} />;
 }
 
 export default Cell;
